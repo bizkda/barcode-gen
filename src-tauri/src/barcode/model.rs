@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Barcode {
     pub id: String,
-    pub nom: Option<String>,
+    pub name: Option<String>,
     pub code: String,           // NOT NULL in schema — shouldn't be Option
     pub symbology: String,
     pub qte: i32,
@@ -16,7 +16,7 @@ pub struct Barcode {
 
 #[derive(Debug, Deserialize)]
 pub struct NewBarcode {
-    pub nom: Option<String>,
+    pub name: Option<String>,
     pub code: String,
     pub symbology: String,
     pub qte: i32,
