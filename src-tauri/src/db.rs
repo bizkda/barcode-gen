@@ -8,7 +8,7 @@ pub struct DbState {
 
 const SCHEMA: &str = "
 CREATE TABLE IF NOT EXISTS barcode (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY ,
     name TEXT,
     code TEXT NOT NULL UNIQUE,
     symbology TEXT NOT NULL,
