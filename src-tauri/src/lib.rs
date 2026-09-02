@@ -18,7 +18,11 @@ pub fn run() {
             Ok(())
         })
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            barcode::commands::create_barcode,
+            barcode::commands::search_barcode,
+            ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
