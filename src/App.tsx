@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./App.css";
+import { CodePreview, type CodeType } from "./components/CodePreview.tsx";
 
-const BARCODE_TYPES = ["Code 128", "QR Code", "EAN-13", "UPC-A", "Data Matrix"];
+
+const BARCODE_TYPES: CodeType[] = ["Code 128", "QR Code", "EAN-13", "UPC-A", "Data Matrix"];
 const SWATCHES = [
   { name: "Ink", value: "#201C18" },
   { name: "Teal", value: "#1F5F5B" },
@@ -103,26 +105,7 @@ function App() {
         style={{ background: "var(--ps-surface)", borderRadius: "var(--ps-radius-lg)", boxShadow: "var(--ps-shadow-md)" }}
         className="mb-6 flex flex-col items-center gap-4 p-6"
       >
-        <div
-          style={{ background: "#FFFFFF", borderRadius: "var(--ps-radius-md)" }}
-          className="flex w-full flex-col items-center gap-2 px-4 pt-5 pb-4"
-        >
-          <svg viewBox="0 0 220 56" preserveAspectRatio="none" aria-hidden="true" className="block h-16 w-full">
-            <rect x="0" y="0" width="220" height="56" fill="#ffffff" />
-            <g fill={selectedSwatch}>
-              {[
-                4, 9, 13, 18, 25, 29, 35, 39, 44, 51, 55, 60, 66, 70, 77, 82, 86, 92, 96, 101,
-                108, 112, 118, 123, 127, 134, 138, 143, 149, 153, 160, 165, 169, 175, 179, 184,
-                191, 195, 201, 206, 210, 215,
-              ].map((x, i) => (
-                <rect key={x} x={x} y={4} width={[3, 1, 2, 4][i % 4]} height={44} />
-              ))}
-            </g>
-          </svg>
-          <span style={{ fontFamily: "var(--ps-font-body)", color: "#201C18" }} className="text-[11px] tracking-[0.12em]">
-            {encodeValue.slice(0, 1)} {encodeValue.slice(1, 6)}K {encodeValue.slice(6, 9)}K {encodeValue.slice(9)}
-          </span>
-        </div>
+        <CodePreview type={selectedType} value={encodeValue} color={selectedSwatch} widthPercent={size} />
         <span style={{ fontFamily: "var(--ps-font-body)", color: "var(--ps-fg-muted)" }} className="text-xs font-bold">
           {selectedType} · {size}%
         </span>
