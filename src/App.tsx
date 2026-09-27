@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { CodePreview, type CodeType } from "./components/CodePreview.tsx";
-import { BarcodeIcon , QrIcon , SaveIcon , ShareIcon } from "./components/icon.tsx";
+import { CodePreview, type CodeType } from "./views/components/CodePreview.tsx";
+import { BarcodeIcon , QrIcon , SaveIcon , ShareIcon } from "./views/components/Icon.tsx";
 
 
 const BARCODE_TYPES: CodeType[] = ["Code 128", "QR Code", "EAN-13", "UPC-A", "Data Matrix"];

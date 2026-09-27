@@ -2,7 +2,7 @@ use tauri::Manager;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 mod db;
-mod barcode;
+
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -20,8 +20,6 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
             greet,
-            barcode::commands::create_barcode,
-            barcode::commands::search_barcode,
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
